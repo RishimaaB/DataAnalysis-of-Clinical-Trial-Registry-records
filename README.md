@@ -10,4 +10,4 @@ The following are included in this file:
 a) R scripts for downloading the records and web-scraping the required data.
 b) Data analysis scripts written in Python.
 
-To filter the data and provide the desired results, shell scripting and MS-Excel functions were used.
+To filter the data and providing the desired results, shell scripting and MS-Excel functions were used.
