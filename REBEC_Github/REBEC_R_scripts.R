@@ -1,4 +1,4 @@
-#**********************************************Script - 1**************************************************************************
+#*********************************************************************Script - 1*********************************************************************************************
 #Downloading records from the REBEC registry
 
 libraries = c( "XML", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
@@ -44,7 +44,7 @@ dbDisconnect(mydb)
 
 
 
-#****************************************************Script - 2*************************************************************************************
+#********************************************************************Script - 2********************************************************************************************
 #Web-scraped the fields from all the downloaded records to look for the keyword 'India' or 'CTRI'
 
 libraries = c( "XML", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
