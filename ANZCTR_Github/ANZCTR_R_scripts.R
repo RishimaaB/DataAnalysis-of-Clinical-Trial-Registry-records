@@ -1,4 +1,4 @@
-#******************************************Script 1 **********************************************
+#********************************************************************Script-1 ***********************************************************************************************
   #Downloading the records from the ANZCTR registry
 
   libraries = c( "XML","robotstxt", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
@@ -41,7 +41,7 @@
   
   
   
-#*****************************************Script - 2*********************************************
+#*********************************************************************Script - 2**********************************************************************************************
 #Web-scraped all the downloaded records for 'India' or 'CTRI' keyword (case-insensitive)
   
   
@@ -99,7 +99,7 @@ for (row in 1:nrow(ids)) {
   
   
   
-#**************************************Script-3**************************************
+#*************************************************************Script-3*********************************************************************************************************
 #After execution of the 'Script-2', we came to know that 282 records have the 'India' keyword.
 #Scraped the 282 records for the field 'Recruitment outside Australia' in order to know whether 'India' is mentioned as a Country of recruitment.
 
