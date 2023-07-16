@@ -1,4 +1,4 @@
-#*********************************************Script 1*******************************************
+#*****************************************************************Script 1******************************************************************************************************
 #Downloaded all the records from the PACTR registry
 
 libraries = c( "XML","robotstxt", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
@@ -32,7 +32,7 @@ for (i in seq_along(ids)) {
 }
 
 
-#**************************************Script 2**************************************************
+#********************************************************************Script 2****************************************************************************************************
 #Web-scraped all the downloaded records for the keyword 'India' or 'CTRI' keyword (case-insensitive)
 
 libraries = c( "XML", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
@@ -84,7 +84,7 @@ for (i in seq_along(ids)) {
   }
 }
 
-#*****************************************Script - 3***********************************************************************
+#**********************************************************************Script - 3***************************************************************************************************
 #Web scraped the field 'Countries of Recruitment' from all the records which had the 'India' keyword
 
 libraries = c( "XML", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
@@ -147,8 +147,7 @@ for (i in seq_along(ids)) {
 }
 
 
-#***********************************Script - 4************************************************************************
-
+#***********************************************************************Script - 4***************************************************************************************************
 #Scraped the remaining records where 'India' was not mentioned as a recruitment country, but the keyword 'India' was present in other fields
 
 ##Script 4a
@@ -343,11 +342,7 @@ for (i in seq_along(ids)) {
     Recruitment_centre_country <- pactr_page %>% html_nodes(".divtrialInformation:nth-child(9) .info:nth-child(5)") %>% html_text() %>% toString() %>% str_squish() %>% str_trim()
     Recruitment_centre_country <- new_function(Recruitment_centre_country)
     
-    
-    
-    
-    
-    
+  
     ##Funding sources
     Funding_source_name <- pactr_page %>% html_nodes(".divtrialInformation:nth-child(10) .info:nth-child(1)") %>% html_text() %>% toString() %>% str_squish() %>% str_trim()
     Funding_source_name <- new_function(Funding_source_name)
