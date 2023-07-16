@@ -1,6 +1,5 @@
-#****************************************Script - 1**********************************************************************
+#***************************************************************Script - 1***************************************************************************************************
 #Downloaded all the records from the IRCT registry
-
 
 libraries = c( "XML","robotstxt", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
 lapply(libraries, require, character.only = TRUE)
@@ -34,7 +33,7 @@ for (i in seq_along(ids)) {
 }
 
 
-#********************************************Script - 2***********************************************************
+#*************************************************************************Script - 2*******************************************************************************************
 #Web-scraped all the records for the keyword 'India' or 'CTRI' (case-insensitive)
 
 libraries = c( "XML", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
@@ -88,7 +87,7 @@ for (i in seq_along(ids)) {
 }
 
 
-#*******************************************Script - 3******************************************************************************
+#************************************************************************Script - 3**************************************************************************************************
 #Script - 3 and Script - 4 was utilized to scrape only those fields which have the 'India' or 'CTRI' keyword
 
 libraries = c( "XML", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
@@ -192,7 +191,7 @@ for (i in seq_along(ids)) {
 }
 
 
-#*********************************************************Script - 4**************************************************************************
+#*****************************************************************************Script - 4*********************************************************************************************
 
 libraries = c( "XML", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
 lapply(libraries, require, character.only = TRUE)
