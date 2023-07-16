@@ -1,4 +1,4 @@
-#************************************************Script-1*******************************************************
+#***********************************************************************Script-1*********************************************************************************************
 #Downloading the records from the CRIS registry
 
 libraries = c( "XML", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
@@ -58,7 +58,7 @@ for (i in seq_along(ids)) {
 
 
 
-#**************************************************Script-2******************************************************
+#*********************************************************************Script-2***********************************************************************************************
 #Web scraped the downloaded records for the keyword 'India' or 'CTRI' (case-insensitive)
 
 libraries = c( "XML", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
@@ -117,7 +117,7 @@ for (i in seq_along(ids)) {
   }
 }
 
-#**************************************************Script - 3*********************************************
+#***************************************************************Script - 3****************************************************************************************************
 
 #Script-3a (This script was used for web scraping the field 'Study site' to retrieve the number of recruitment centers as written in that field)
 
