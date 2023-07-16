@@ -1,4 +1,4 @@
-#***************************************Script 1*******************************************************************************
+#*******************************************************************Script 1*************************************************************************************************
 #Downloaded all the records present in the DRKS registry
 
 libraries = c( "XML","robotstxt", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
@@ -35,7 +35,7 @@ for (i in seq_along(ids)) {
 }
 
 
-#*************************************************Script - 2*********************************************************************************
+#**********************************************************************Script - 2********************************************************************************************
 #Web scraped the downloaded records for the 'India' or 'CTRI' keyword (case-insensitive)
 
 libraries = c( "XML", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
@@ -86,7 +86,7 @@ for (i in seq_along(ids)) {
 }
 
 
-#**********************************************Script - 3**********************************************************************
+#**************************************************************************Script - 3*****************************************************************************************
 #Web-scraped the field 'Countries of Recruitment' from the records which have the keyword 'India'
 
 libraries = c( "XML", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
