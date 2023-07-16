@@ -1,4 +1,4 @@
-#***************************************Script - 1***************************************************************************
+#******************************************************************Script - 1*************************************************************************************************
 #Downloading the records from the REPEC registry
 #Script-1a (Downloading the English version - 1861 records)
 
@@ -75,8 +75,7 @@ for (i in seq_along(ids)){
 }
 
 
-#****************************************Script - 2************************************************************
-
+#***************************************************************Script - 2*****************************************************************************************************
 #Web-scraped all the downloaded records for 'India' or 'CTRI' keyword
 
 libraries = c( "XML", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
@@ -136,7 +135,7 @@ for (i in seq_along(ids)) {
   }
 }
 
-#*********************************************Script - 3****************************************************************
+#********************************************************************Script - 3*************************************************************************************************
 
 #Web scraped the field 'Countries where the enrollment is conducted' from the records which have 'India' keyword
 
