@@ -1,6 +1,5 @@
-#***************************************************Script - 1*********************************************************
+#***************************************************************Script - 1****************************************************************************************************
 #Downloading all the records from the jRCT registry
-
 
 libraries = c( "XML","robotstxt", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
 lapply(libraries, require, character.only = TRUE)
@@ -42,7 +41,7 @@ for (i in seq_along(ids)) {
 }
 
 
-#*****************************************Script - 2******************************************************************************************
+#**********************************************************************Script - 2*********************************************************************************************
 #Web-scraped all the downloaded records for the keyword 'India' or 'CTRI'
 
 libraries = c( "XML", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
@@ -103,7 +102,7 @@ for (i in seq_along(ids)) {
 
 
 
-#********************************************Script - 3***************************************************************
+#****************************************************************Script - 3****************************************************************************************************
 #Web scraped the field 'Countries of recruitment' from the records which have the 'India' keyword
 
 libraries = c( "XML", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
