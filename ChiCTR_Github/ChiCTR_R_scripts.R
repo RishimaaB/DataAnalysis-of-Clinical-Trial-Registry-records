@@ -1,4 +1,4 @@
-#******************************************Script-1********************************************************
+#*****************************************************************Script-1****************************************************************************************************
 #This script is used to extract the links of all the records present in the ChiCTR registry)
 
 libraries = c( "XML", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
@@ -23,9 +23,8 @@ for (page_result in seq(from=1,to=6882)) {
 
 
 
-#****************************************Script-2********************************************************
+#************************************************************************Script-2**********************************************************************************************
 #Web scraped the downloaded records for the 'India' and the 'CTRI' keyword (case-insensitive) 
-
 
 libraries = c( "XML", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
 lapply(libraries, require, character.only = TRUE)
@@ -88,7 +87,7 @@ for (i in seq_along(ids)) {
   }}
 
 
-#**********************************************Script - 3***************************************************
+#************************************************************Script - 3********************************************************************************************************
 #Web scraped the field 'Countries of recruitment and research settings' in all the records with the keyword 'India'
 
 libraries = c( "XML", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
@@ -164,4 +163,5 @@ for (i in seq_along(ids)) {
     
     
     
-  }}
+  }
+}
