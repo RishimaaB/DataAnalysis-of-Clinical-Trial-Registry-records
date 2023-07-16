@@ -1,4 +1,4 @@
-#*************************************Script 1**********************************************
+#******************************************************************Script 1***************************************************************************************************
 #Downloaded all the records from the ITMCTR registry
 
 libraries = c( "XML","robotstxt", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
@@ -37,7 +37,7 @@ for (i in seq_along(ids)) {
 
 
 
-#**************************Script - 2*******************************************************************************
+#**********************************************************************Script - 2**********************************************************************************************
 #Web-scraped all the records for the 'India' or 'CTRI' keyword (key-insensitive)
 
 libraries = c( "XML", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
