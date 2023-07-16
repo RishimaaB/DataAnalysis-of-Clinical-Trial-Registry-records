@@ -1,5 +1,4 @@
-#********************************************Script - 1*************************************************************************************
-
+#*******************************************************************Script - 1************************************************************************************************
 #Downloaded all the records from the SLCTR registry
 
 libraries = c( "XML", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
@@ -49,7 +48,7 @@ for (i in seq_along(ids)) {
 
 
 
-#************************************************Script - 2**************************************************************************
+#*******************************************************************Script - 2*****************************************************************************************************
 #Web-scraped all the fields from the downloaded records to look for the keyword 'India' or 'CTRI'
 
 libraries = c( "XML", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
