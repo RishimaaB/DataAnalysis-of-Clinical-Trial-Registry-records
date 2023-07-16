@@ -1,4 +1,4 @@
-#*************************************Script - 1****************************************************
+#******************************************************************Script - 1*************************************************************************************************
 #Downloaded all the records from the ISRCTN registry
 
 libraries = c( "XML","robotstxt", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
@@ -41,7 +41,7 @@ for (i in seq_along(ids)) {
 
 
 
-#*****************************************Script - 2********************************************************************************
+#**********************************************************************Script - 2**********************************************************************************************
 #Web-scraped all the downloaded records for the 'India' or 'CTRI' keyword (case-insensitive)
 
 libraries = c( "XML", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
@@ -105,7 +105,7 @@ for (i in seq_along(ids)) {
 
 
 
-#********************************************************Script - 3***************************************************************************
+#*************************************************************************Script - 3*************************************************************************************************
 
 #Web-scraped the field 'Countries of recruitment' from the records which have 'India' keyword
 
@@ -178,7 +178,7 @@ for (i in seq_along(ids)) {
 
 
 
-#**************************************************Script - 4******************************************************************************
+#*******************************************************************************Script - 4**************************************************************************************************
 
 #Scraping the remaining records which does not have 'India' in the field 'Countries of recruitment' but in other fields. 
 
@@ -278,12 +278,7 @@ for (i in seq_along(ids)) {
         return(a)
       }
     }
-    
-    
-    
-    
-    
-    
+      
     Trial_ID <- ids[i]
     Registration_number <- isrctn_page %>% html_nodes(".ComplexTitle_primary") %>% html_text() %>% toString()
     Registration_number <- new_function(Registration_number)
