@@ -1,65 +1,5 @@
-#***********************************************************************Script-1*********************************************************************************************
-#Downloading the records from the CRIS registry
-
-libraries = c( "XML", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
-lapply(libraries, require, character.only = TRUE)
-ids = c(850:40000)
-counter = 0
-
-new_function <- function(a) {
-  
-  if (length(a) == 0) {
-    a <- "NA"
-  } else if (a == "") {
-    a <- "NA"
-  } else {
-    return(a)
-  }
-}
-
-
-
-for (i in seq_along(ids)) {
-  official_url = paste0("https://cris.nih.go.kr/cris/search/detailSearch.do?seq=",ids[i])
-  url = url(paste0("https://cris.nih.go.kr/cris/search/detailSearch.do?seq=",ids[i]))
-  output_file=paste0("cris_page",ids[i],".html")
-  myfile = read_html(url) 
-  output1 = myfile %>% html_nodes("#step1 tr:nth-child(2) .text-nowrap") %>% html_text()
-  output2 = myfile %>% html_nodes(".dtl_tit_n") %>% html_text() 
-  
-  if ((length(output1) != 0) | (length(output2) != 0)) {   
-    Registration_number=myfile %>% html_nodes("#step1 tr:nth-child(2) td") %>% html_text() %>% str_remove_all("\n") %>% str_remove_all("\r") %>% str_remove_all("\t") %>% str_squish() %>% str_trim() %>% toString()
-    Registration_number = new_function(Registration_number)
-    Registered_date =myfile %>% html_nodes("span:nth-child(4)") %>% html_text() %>% str_remove_all("\n") %>% str_remove_all("\r") %>% str_remove_all("\t") %>% map_chr(1) %>% str_squish() %>% str_trim() 
-    Registered_date = toString(Registered_date) 
-    Registered_date = new_function(Registered_date)
-    Last_updated_date =myfile %>% html_nodes("#wrapper span~ span+ span") %>% html_text() %>% str_remove_all("\n") %>% str_remove_all("\r") %>% str_remove_all("\t") %>% str_squish() %>% str_trim() 
-    Last_updated_date = toString(Last_updated_date)
-    Last_updated_date = new_function(Last_updated_date)
-    
-    download.file(official_url, destfile = output_file, quiet = TRUE)
-    time_of_download = as.character(timestamp())
-    time_stamp = data.frame(Trial_ID = as.character(ids[i]),
-                            Downloaded_time = time_of_download,
-                            URL=as.character(official_url),Registration_number,Registered_date,Last_updated_date)
-    
-    write.table(time_stamp, "time_stamp_CRIS.csv", sep = ",",row.names = FALSE, col.names = !file.exists("time_stamp_CRIS.csv"), append = T)
-    
-    counter = counter + 1
-    print(paste("Count = ", counter,"ID = ",ids[i]))
-    
-  } else {
-    print(counter)
-    print("This record is not present")
-  }
-    
-  
-}
-
-
-
-#*********************************************************************Script-2***********************************************************************************************
-#Web scraped the downloaded records for the keyword 'India' or 'CTRI' (case-insensitive)
+#*********************************************************************Script- 1***********************************************************************************************
+#Web scraped the records for the keyword 'India' or 'CTRI' (case-insensitive)
 
 libraries = c( "XML", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
 lapply(libraries, require, character.only = TRUE)
@@ -117,9 +57,9 @@ for (i in seq_along(ids)) {
   }
 }
 
-#***************************************************************Script - 3****************************************************************************************************
+#***************************************************************Script - 2****************************************************************************************************
 
-#Script-3a (This script was used for web scraping the field 'Study site' to retrieve the number of recruitment centers as written in that field)
+#Script-2a (This script was used for web scraping the field 'Study site' to retrieve the number of recruitment centers as written in that field)
 
 libraries = c( "XML", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
 lapply(libraries, require, character.only = TRUE)
@@ -168,7 +108,7 @@ for (i in seq_along(ids)) {
   }
 }
 
-##Script - 3b (This script was used for confirming the number of recruitment sites for each records)
+##Script - 2b (This script was used for confirming the number of recruitment sites for each records)
 
 
 libraries = c( "XML","robotstxt", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
@@ -209,7 +149,7 @@ for (row in 1:nrow(ids)) {
 }
 
 
-#Script - 3c (This script was used for scraping the recruitment centres)
+#Script - 2c (This script was used for scraping the recruitment centres)
 
 libraries = c( "XML","robotstxt", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
 lapply(libraries, require, character.only = TRUE)
@@ -265,5 +205,14 @@ for (i in seq_along(ids)) {
 }
 
 
+#*********************************************************************Script - 3************************************************************************************************************
+#Storing all the files in a local SQLite database
+libraries = c("tidyverse", "stringr",  "rvest", "XML", "purrr", "data.table", "DBI", "httr")
+lapply(libraries, require, character.only = TRUE)
+
+mydb <- dbConnect(RSQLite::SQLite(), "CRIS.sqlite")
+file <- read.csv(file.choose())
+dbWriteTable(mydb, "111", file, append = TRUE)
 
 
+#***********************************************************************The End***************************************************************************************************
