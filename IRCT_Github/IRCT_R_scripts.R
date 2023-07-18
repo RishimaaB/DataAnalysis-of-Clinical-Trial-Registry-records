@@ -259,4 +259,14 @@ for (i in seq_along(ids)) {
     
   }}
 
+#*****************************************************************Script - 5*************************************************************************************************
+#Storing all the files in a local SQLite database 
 
+libraries = c("tidyverse", "stringr",  "rvest", "XML", "purrr", "data.table", "DBI", "httr")
+lapply(libraries, require, character.only = TRUE)
+
+mydb <- dbConnect(RSQLite::SQLite(), "IRCT.sqlite")
+file <- read.csv(file.choose())
+dbWriteTable(mydb, "file", file, append = TRUE)
+
+#*******************************************************************The End*****************************************************************************************************
