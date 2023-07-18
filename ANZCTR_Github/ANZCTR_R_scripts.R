@@ -1,4 +1,45 @@
 #*********************************************************************Script - 1**********************************************************************************************
+ #Downloading the records from the ANZCTR registry
+
+  libraries = c( "XML","robotstxt", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
+  lapply(libraries, require, character.only = TRUE)
+  ids <- data.frame()
+  ids <- read.csv("ids.csv")
+  colnames(ids) <- "ids"
+  counter=0
+  
+  
+  for (row in 1:nrow(ids)) {
+    i <- ids[row,1]
+    myurl = paste0("https://www.anzctr.org.au/Trial/Registration/TrialReview.aspx?id=",i,"&isReview=true") 
+    url = url(paste0("https://www.anzctr.org.au/Trial/Registration/TrialReview.aspx?id=",i,"&isReview=true"))
+    anzctr_page = read_html(url)
+    keyword=anzctr_page %>% html_nodes(".page-title") %>% html_text() %>% str_remove_all("\r") %>% str_remove_all("\n") %>% str_remove_all("\t") %>% str_squish() %>% str_trim()
+    keyword = toString(keyword)
+    if (keyword == "")
+    {
+      keyword <- "NA"
+    }
+    if (keyword != "Restricted Area") { 
+      myfile = paste0("anzctr_page",i,".html")
+      download.file(myurl, destfile = myfile, quiet = TRUE)
+      time_of_download = as.character(timestamp())
+      
+      time_stamp = data.frame(Trial_ID = as.character(i),
+                              downloaded_time = time_of_download,
+                              URL = as.character(myurl))
+      write.table(time_stamp, "time_stamp_anzctr.csv", sep = ",",row.names = FALSE, col.names = !file.exists("time_stamp_anzctr.csv"), append = T)
+      
+      counter = counter + 1
+      print(paste("Count = ", counter,"ID = ",i))
+    }
+    else {
+      print(paste("Count = ", counter,"ID = ",i," IS INVALID "))
+      
+    }
+  }
+  
+#*********************************************************************Script - 2**********************************************************************************************
 #Web-scraped the records for 'India' or 'CTRI' keyword (case-insensitive)
   
 libraries = c( "XML", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
@@ -55,7 +96,7 @@ for (row in 1:nrow(ids)) {
   
   
   
-#*************************************************************Script-2*********************************************************************************************************
+#*************************************************************Script - 3*********************************************************************************************************
 #After execution of the 'Script-2', we came to know that 282 records have the 'India' keyword.
 #Scraped the 282 records for the field 'Recruitment outside Australia' in order to know whether 'India' is mentioned as a Country of recruitment.
 
@@ -131,7 +172,7 @@ for (row in 1:nrow(ids)) {
   }
 }
 
-#*****************************************************************Script - 3**************************************************************************************************
+#*****************************************************************Script - 4**************************************************************************************************
 #Storing all the files in a local SQLite database 
 
 libraries = c("tidyverse", "stringr",  "rvest", "XML", "purrr", "data.table", "DBI", "httr")
@@ -139,7 +180,7 @@ lapply(libraries, require, character.only = TRUE)
 
 mydb <- dbConnect(RSQLite::SQLite(), "ANZCTR.sqlite")
 file <- read.csv(file.choose())
-dbWriteTable(mydb, "14", file, append = TRUE)
+dbWriteTable(mydb, "file1", file, append = TRUE)
 
 
 
