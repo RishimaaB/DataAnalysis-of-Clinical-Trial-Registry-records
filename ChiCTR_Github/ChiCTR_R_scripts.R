@@ -158,10 +158,17 @@ for (i in seq_along(ids)) {
     
     counter = counter + 1
     print(paste("Count = ", counter,"ID = ",ids[i]))
-    
-    
-    
-    
-    
-  }
+    }
 }
+
+#*****************************************************************Script - 4*************************************************************************************************
+#Storing all the files in a local SQLite database 
+
+libraries = c("tidyverse", "stringr",  "rvest", "XML", "purrr", "data.table", "DBI", "httr")
+lapply(libraries, require, character.only = TRUE)
+
+mydb <- dbConnect(RSQLite::SQLite(), "ChiCTR.sqlite")
+file <- read.csv(file.choose())
+dbWriteTable(mydb, "file", file, append = TRUE)
+
+#*******************************************************************The End*****************************************************************************************************
