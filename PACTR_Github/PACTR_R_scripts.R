@@ -1,4 +1,4 @@
-#*****************************************************************Script 1******************************************************************************************************
+#*****************************************************************Script - 1******************************************************************************************************
 #Downloaded all the records from the PACTR registry
 
 libraries = c( "XML","robotstxt", "tidyft","data.table", "DBI", "httr", "RSQLite","tidyverse","rvest","stringr","robotstxt","selectr","xml2","dplyr","forcats","magrittr","tidyr","ggplot2","lubridate","tibble","purrr","googleLanguageR","cld2")
